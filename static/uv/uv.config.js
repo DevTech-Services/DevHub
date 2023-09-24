@@ -1,6 +1,10 @@
 self.__uv$config = {
     prefix: "/~/",
-    bare: "https://tomp.app/",
+    bare: [
+    "https://bare-1.noctura.app/",
+    "https://tomp.app/",
+    "https://bare-1.noctura.tech/",
+  ],
     encodeUrl: Ultraviolet.codec.plain.encode,
     decodeUrl: Ultraviolet.codec.plain.decode,
     handler: "/uv/uv.handler.js",
