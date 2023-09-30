@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Google</title>
+  <meta content="DevHub" property="og:title" />
+  <meta content='DevHub is the fastest and most hidden proxy of 2023. Achieve speeds and games better than your education!' property="og:description" />
+  <meta name="keywords" content="devhub, dev hub, school games, games, unblocker, unblock, unblocked games, proxy, proxy site, proxies. ultraviolet, ultraviolet proxy, thedevs, unblockedgames, ubg, school games, school proxy, youtube unblocker, youtube, slopes unblocked, unblocked games 76, unblocked games 66, 1v1 lol unblocked, unblocked" />
+  <link rel="shortcut icon" href="https://www.google.com/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/main.js" type="module"></script>
+</head>
+
+<body>
+  <h1 style="font-size: 100px;font-family: 'Poppins', sans-serif;animation: colorChange 6s infinite;">DevHub</h1>
+  <p1 id="meme" style='font-family: "Montserrat", Arial, sans-serif; font-size: 28px;'></p1>
+
+  <br> <br> <br>
+  <br><br>
+  <button onclick="window.open('https://dariandev.com/discord')" class="hvr-grow">Discord</button>
+</body>
+</html>
+
+<script>
+
+  const strings = [
+    "DevHaxx is fire (.gg/haxx)",
+    "your data is secure, we wont expose you for watching men twerk",
+    "free robux real 2023 working",
+    "i do things then regret it - Darian",
+    "creating then deletion - Darian",
+    "do your homework",
+    "why do people exist",
+    "who am I anymore?",
+    "i have no friends.",
+    "no. dont do it, its not worth it. no one cares",
+    "perhaps",
+    "discord.gg/haxx",
+    "thats not true",
+    "https://www.google.com/search?q=how+to+get+friends",
+    "i miss the times i ate little kids at 2:91 am",
+    "i havent touched grass today",
+    "discord.gg/haxx",
+  ];
+
+  const typewriter = document.getElementById('meme');
+  const typingSpeed = 50;
+  const clearDelay = 1000;
+
+  function typeWriter() {
+    const randomString = strings[Math.floor(Math.random() * strings.length)];
+    let charIndex = 0;
+
+    function type() {
+      if (charIndex < randomString.length) {
+        typewriter.innerHTML += randomString.charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingSpeed + Math.random() * 100);
+      } else {
+        setTimeout(clearText, clearDelay);
+      }
+    }
+
+    function clearText() {
+      let text = typewriter.innerHTML;
+      if (text.length === 0) {
+        typeWriter();
+      } else {
+        typewriter.innerHTML = text.slice(0, -1);
+        setTimeout(clearText, typingSpeed - Math.random() * 50);
+      }
+    }
+
+    type();
+  }
+
+  typeWriter();
+</script>

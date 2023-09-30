@@ -1,12 +1,22 @@
 {
   "name": "devhub",
-  "description": "devhub pretty cool fr",
-  "author": "devTech",
+  "version": "1.0.0",
+  "description": "devHub introduces a high speed proxy, homework utilities, and games",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevTech-Services/DevHub/DevHub.git"
+  },
+  "author": "devTech",
+  "license": "ISC",
+  "homepage": "https://dariandev.com/",
   "dependencies": {
+    "@tomphttp/bare-server-node": "*",
     "express": "*",
-    "path": "*"
+    "url": "*"
   }
 }
