@@ -29,4 +29,3 @@ erudaInt = setInterval(() => {
 }, 100);
 
 }, 250);
-
