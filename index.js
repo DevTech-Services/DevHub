@@ -6,7 +6,7 @@ import url from 'url';
 
 const app = express();
 const server = http.createServer();
-const bareServer = createBareServer("/bare/");
+const bareServer = createBareServer("/dhService/");
 const port = process.env.PORT || process.argv[2] || 80;
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 

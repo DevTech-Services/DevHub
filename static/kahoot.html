@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Google</title>
+  <meta content="DevHub" property="og:title" />
+  <meta content='DevHub is the fastest and most hidden proxy of 2023. Achieve speeds and games better than your education!' property="og:description" />
+  <meta name="keywords" content="devhub, dev hub, school games, games, unblocker, unblock, unblocked games, proxy, proxy site, proxies. ultraviolet, ultraviolet proxy, thedevs, unblockedgames, ubg, school games, school proxy" />
+  <link rel="shortcut icon" href="https://www.google.com/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="./uv/uv.bundle.js"></script>
+  <script src="./uv/uv.config.js"></script>
+</head>
+
+<body>
+  <h1 class="hvr-buzz">NOTE: Some games may have ads</h1>
+  <br>
+  <div class="games hvr-hang">
+  </div>
+  <script src="/js/main.js" type="module"></script>
+</body>
+
+</html>
+
+<script>
+  if (document.querySelector('.games')) {
+    fetch('/games.json')
+    .then(res => res.json())
+    .then(games => {
+        games.forEach(game => {
+            const element = document.createElement('div');
+            element.classList = 'game hvr-shadow';
+            element.innerHTML = `<img src="${game.image}"><h3>${game.name}</h3>`;
+            document.querySelector('.games').appendChild(element);
+
+            element.addEventListener('mouseenter', () => {
+              element.classList.add('hvr-shadow-hover');
+            });
+
+            element.addEventListener('mouseleave', () => {
+              element.classList.remove('hvr-shadow-hover');
+            });
+
+            element.addEventListener('click', () => {
+              devhub.openProxy(game.url);
+            });
+        })
+    }).catch(e => {
+        console.log('Failed to load games. Error:' + e);
+    })
+  }
+</script>
