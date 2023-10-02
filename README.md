@@ -32,4 +32,4 @@ You may get support by joining our [discord](https://dariandev.com/discord)!
 
 DevHub® Copyright © 2023
 
-📜[GNU Public License](https://github.com/justDarian/DevHub/blob/main/LICENSE.md)
+📜[GNU Public License](https://github.com/DevTech-Services/DevHub/blob/main/LICENSE.md)
