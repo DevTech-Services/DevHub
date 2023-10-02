@@ -22,6 +22,8 @@ You may get support by joining our [discord](https://dariandev.com/discord)!
 
 [Zack](https://github.com/komouri) - Project Manager
 
+[Lenn106](https://github.com/lenn106) - Domain Funding/Small Dev
+
 [Russell2259](https://github.com/Russell2259) - Ultraviolet Support
 
 [Ultraviolet](https://github.com/titaniumnetwork-dev/Ultraviolet) - Proxy
