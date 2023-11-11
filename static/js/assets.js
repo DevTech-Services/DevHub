@@ -19,7 +19,7 @@ devhub.frame = function(url) {
 // Proxy Opener
 devhub.openProxy = function(urlToProxy) {
   localStorage.setItem("url", urlToProxy);
-  location.href = "/devhub/load";
+  location.href = "/load";
 };
 
 // Custom console.log
