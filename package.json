@@ -15,7 +15,7 @@
   "license": "ISC",
   "homepage": "https://dariandev.com/",
   "dependencies": {
-    "@tomphttp/bare-server-node": "*",
+    "@tomphttp/bare-server-node": "1.2.6",
     "express": "*",
     "url": "*"
   }
