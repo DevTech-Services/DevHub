@@ -11,7 +11,7 @@ if (frame) {
 
     // new window thingy
     openWindowBtn.addEventListener('click', () => {
-      window.open(frame.src);
+      window.open("~/"+localStorage.url);
     });
 
     // fullscreen stuff
@@ -62,4 +62,13 @@ if (frame) {
         document.getElementById("frame").contentWindow.location.reload();
       });
     });
+
+    // update URL logic :3
+  setInterval(() => {
+    const frameUrl = decodeURIComponent(frame.contentWindow.location.pathname.slice(3))
+    
+    if (localStorage.url !== frameUrl) {
+      localStorage.url = frameUrl
+    }
+  }, 1000);
 }

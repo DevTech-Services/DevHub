@@ -8,6 +8,7 @@
   <meta name="keywords" content="devhub, dev hub, school games, games, unblocker, unblock, unblocked games, proxy, proxy site, proxies. ultraviolet, ultraviolet proxy, thedevs, unblockedgames, ubg, school games, school proxy" />
   <link rel="shortcut icon" href="https://www.google.com/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/load.css">
   <script src="./uv/uv.bundle.js"></script>
   <script src="./uv/uv.config.js"></script>
   <script src="/js/main.js" type="module"></script>
@@ -32,7 +33,7 @@
       ></button>
       <button
         id="openWindowBtn"
-        class="fa-solid fa-external-link"
+        class="fa-solid fa-external-link hvr-push"
       ></button>
       <button
         id="reloadBtn"
@@ -43,87 +44,3 @@
 </body>
 
 </html>
-
-<style>
-  body {
-      margin: 0;
-  }
-
-  #iframeContainer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: calc(100vh - 50px);
-  }
-
-  #frame {
-      border: 2vw solid black;
-      border-radius: vw;
-      width: 80vw;
-      height: 80vh;
-      z-index: 0;
-  }
-
-  #frameContainer {
-      position: relative;
-  }
-
-  #fullscreenBtn {
-      position: absolute;
-      top: -5px;
-      right: -3px;
-      background-color: transparent;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      padding: 5px;
-      z-index: 1;
-      font-size: 30px;
-  }
-
-  #openWindowBtn {
-      position: absolute;
-      top: -6px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: transparent;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      padding: 5px;
-      z-index: 1;
-      font-size: 30px;
-  }
-
-  #reloadBtn {
-      position: absolute;
-      top: -5px;
-      left: -3px;
-      background-color: transparent;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      padding: 5px;
-      z-index: 1;
-      font-size: 30px;
-  }
-
-  .loading-circle {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid #3498db;
-    border-radius: 50%;
-    animation: spin 2s linear infinite;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1; 
-  }
-
-  @keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-  }
-</style>

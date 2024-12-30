@@ -1,8 +1,11 @@
-import { createBareServer } from "@tomphttp/bare-server-node";
 import http from "node:http";
 import express from 'express';
 import path from 'node:path';
 import url from 'url';
+
+// proxy imports
+import { createBareServer } from "@tomphttp/bare-server-node";
+import { uvPath } from "@titaniumnetwork-dev/ultraviolet"
 
 const app = express();
 const server = http.createServer();
@@ -11,6 +14,8 @@ const port = process.env.PORT || process.argv[2] || 80;
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 app.use(express.static(path.join(__dirname, '/static'), { extensions: ['html'] }));
+
+app.use('/uv', express.static(uvPath));
 
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, './static/', '404.html'));

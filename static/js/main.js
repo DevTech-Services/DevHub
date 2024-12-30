@@ -1,5 +1,15 @@
+/*
+  heyo, its darian from 2025
+  i fucking hate this code
+  ly bye!
+*/
+
 window.devhub = {};
 window.loadstring = eval;
+
+window.onbeforeunload = () => {
+  return true
+}
 
 fetch('/nav/nav.html')
   .then(res => res.text())
@@ -38,9 +48,6 @@ setTimeout(() => {
       alert("[DevHub]\n\nError: Proxy Package not found")
       console.error("Ultraviolet bundle and config not found")
     }
-
-  } else if (location.pathname.includes("haxx")) {
-    console.log("if ur really trying to get the source thru devtools your wasting your time :3")
-  }
+}
 
 }, 500);

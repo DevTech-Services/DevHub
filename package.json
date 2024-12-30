@@ -15,7 +15,8 @@
   "license": "ISC",
   "homepage": "https://dariandev.com/",
   "dependencies": {
-    "@tomphttp/bare-server-node": "1.2.6",
+    "@titaniumnetwork-dev/ultraviolet": "v2.0.0",
+    "@tomphttp/bare-server-node": "2.0.1",
     "express": "*",
     "url": "*"
   }
