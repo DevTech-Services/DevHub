@@ -1,7 +1,8 @@
 // Cloak Handler
 devhub.cloak = function(url, redirect) {
-  window.open('about:blank').document.write(`<head><title>New Tab</title></head><body><style>body {margin: 0;}</style><iframe style="border: none;" src="${url}" width="100%" height="100%"></body>`);
+  window.open('about:blank').document.write(`<head><title>New Tab</title></head><body><style>body {margin: 0;}</style><iframe style="border: none;" src="${url}" width="100%" height="100%"></body><script>window.isAboutBlank=true;</script>`);
   if (redirect) {
+    window.onbeforeunload = null
     window.location.href = redirect;
   }
 };
@@ -17,8 +18,17 @@ devhub.frame = function(url) {
 };
 
 // Proxy Opener
-devhub.openProxy = function(urlToProxy) {
-  localStorage.setItem("url", urlToProxy);
+devhub.openProxy = function(url) {
+  let modifiedUrl = url;
+    
+  if (!devhub.isUrl(url)) {
+    modifiedUrl = 'https://www.google.com/search?q=' + url;
+  } else if (!(url.startsWith('https://') || url.startsWith('http://'))) {
+    modifiedUrl = 'http://' + url;
+  }
+
+  localStorage.setItem("url", modifiedUrl);
+  window.onbeforeunload = null
   location.href = "/load";
 };
 
@@ -37,3 +47,10 @@ devhub.error = function(data) {
 // console.error override
 console_error = console.error;
 console.error = devhub.error;
+
+// omg why isnt this shit here
+function isUrl(val) {
+  const urlRegex = /^(https?:\/\/)?([\w.-]+)\.([a-z]{2,})(\/.*)?$/i;
+  return urlRegex.test(val);
+}
+devhub.isUrl = isUrl;

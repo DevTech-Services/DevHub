@@ -20,6 +20,8 @@ You may get support by joining our [discord](https://dariandev.com/discord)!
 # Credits
 [Darian](https://github.com/justDarian) - Owner/Developer
 
+[Lenn106](https://github.com/lenn106) - CoOwner/Developer
+
 [Russell2259](https://github.com/Russell2259) - Developer
 
 [Ultraviolet](https://github.com/titaniumnetwork-dev/Ultraviolet) - Proxy

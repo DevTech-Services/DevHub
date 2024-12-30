@@ -1,5 +1,7 @@
 import http from "node:http";
 import express from 'express';
+import cors from 'cors'
+import compression from "compression";
 import path from 'node:path';
 import url from 'url';
 
@@ -10,12 +12,25 @@ import { uvPath } from "@titaniumnetwork-dev/ultraviolet"
 const app = express();
 const server = http.createServer();
 const bareServer = createBareServer("/dhService/");
+
 const port = process.env.PORT || process.argv[2] || 80;
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-app.use(express.static(path.join(__dirname, '/static'), { extensions: ['html'] }));
+app.use(compression())
+app.use(cors())
 
-app.use('/uv', express.static(uvPath));
+// serve static files and cache em
+app.use(express.static(path.join(__dirname, '/static'), {
+    extensions: ['html'],
+    setHeaders: (res, path) => {
+        res.setHeader('Cache-Control', `public, max-age=${60 * 60 * 24 * 1}`)
+    }
+}))
+app.use('/uv', express.static(uvPath, {
+    setHeaders: (res, path) => {
+        res.setHeader('Cache-Control', `public, max-age=${60 * 60 * 24 * 1}`)
+    }
+}))
 
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, './static/', '404.html'));

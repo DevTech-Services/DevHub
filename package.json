@@ -17,6 +17,8 @@
   "dependencies": {
     "@titaniumnetwork-dev/ultraviolet": "v2.0.0",
     "@tomphttp/bare-server-node": "2.0.1",
+    "compression": "*",
+    "cors": "*",
     "express": "*",
     "url": "*"
   }

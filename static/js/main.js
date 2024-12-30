@@ -7,6 +7,7 @@
 window.devhub = {};
 window.loadstring = eval;
 
+// preent closing site
 window.onbeforeunload = () => {
   return true
 }
@@ -48,6 +49,14 @@ setTimeout(() => {
       alert("[DevHub]\n\nError: Proxy Package not found")
       console.error("Ultraviolet bundle and config not found")
     }
-}
+  }
+  // to init it
+  onbeforeunload()
 
+  // disable onbeforeunload for all href's
+  document.querySelectorAll('a[href]').forEach(a => 
+    a.addEventListener('click', ()=>{
+        window.onbeforeunload = null
+    })
+  );
 }, 500);
