@@ -7,12 +7,12 @@
 # DevHub
 DevHub is a proxy hub, mostly meant to be a fast one stop shop for a high speed proxy and tons of games. All of this was possible because of  [Ultraviolet](https://github.com/titaniumnetwork-dev/Ultraviolet)!
 
-<!-- <div align="center">
+<div align="center">
   <a href="https://devhub.dariandev.com/">🔥 Live Website: https://devhub.dariandev.com/</a>
-</div> -->
+</div>
 
 # How does it work?
-Using [Ultraviolet](https://github.com/titaniumnetwork-dev/Ultraviolet), you can proxy sites through a [Bare Server](https://github.com/tomphttp/bare-server-node).
+Using [Ultraviolet](https://github.com/titaniumnetwork-dev/Ultraviolet), you can proxy traffic through a [Bare Server](https://github.com/tomphttp/bare-server-node).
 
 # Get Support
 You may get support by joining our [discord](https://dariandev.com/discord)!
@@ -28,6 +28,6 @@ You may get support by joining our [discord](https://dariandev.com/discord)!
 
 # License
 
-DevHub® Copyright © 2023
+DevHub® Copyright © 2024
 
 📜[GNU Public License](https://github.com/DevTech-Services/DevHub/blob/main/LICENSE.md)

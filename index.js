@@ -16,14 +16,14 @@ const bareServer = createBareServer("/dhService/");
 const port = process.env.PORT || process.argv[2] || 80;
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-app.use(compression())
+app.use(compression({ level: 6 }));
 app.use(cors())
 
 // serve static files and cache em
 app.use(express.static(path.join(__dirname, '/static'), {
     extensions: ['html'],
     setHeaders: (res, path) => {
-        res.setHeader('Cache-Control', `public, max-age=${60 * 60 * 24 * 1}`)
+        res.setHeader('Cache-Control', `public, max-age=${60 * 60 * 24 * 1}`) 
     }
 }))
 app.use('/uv', express.static(uvPath, {
