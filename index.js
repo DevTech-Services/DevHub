@@ -19,13 +19,15 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
 // enable compression, cors and caching
 app.use((req, res, next) => {
-    res.setHeader('Cache-Control', `public, max-age=${60 * 60 * 2}`) // 2 hour cache controlled from the browser
-    next()
-})
+    if (req.method === 'GET') {
+      res.setHeader('Cache-Control', 'public, max-age=7200'); // 2-hour cache controlled from browser
+    }
+    next();
+});
 app.use(compression())
 app.use(cors())
 
-app.use(express.static(path.join(__dirname, '/static'), {
+app.use(express.static(path.join(__dirname, 'static'), {
     extensions: ['html']
 }))
 
@@ -39,7 +41,9 @@ app.use((req, res, next) => {
 });
 
 server.on("request", (req, res) => {
-    app(req, res)
+    if (!req.url.endsWith("/wisp/")) {
+        app(req, res);
+    }
 });
 
 server.on("upgrade", (req, socket, head) => {
