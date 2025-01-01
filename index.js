@@ -17,21 +17,22 @@ const server = http.createServer()
 const port = process.env.PORT || process.argv[2] || 80
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
-const middleware = (req, res, next) => {
+// enable compression, cors and caching
+app.use((req, res, next) => {
     res.setHeader('Cache-Control', `public, max-age=${60 * 60 * 2}`) // 2 hour cache controlled from the browser
     next()
-};
-
-// enable compression and cors
+})
 app.use(compression())
 app.use(cors())
 
-app.use('/static', middleware, express.static(path.join(__dirname, '/static'), { extensions: ['html'] }))
+app.use(express.static(path.join(__dirname, '/static'), {
+    extensions: ['html']
+}))
 
 // serve proxy files
-app.use('/uv/', middleware, express.static(uvPath))
-app.use('/epoxy/', middleware, express.static(epoxyPath))
-app.use('/baremux/', middleware, express.static(baremuxPath))
+app.use('/uv/', express.static(uvPath))
+app.use('/epoxy/', express.static(epoxyPath))
+app.use('/baremux/', express.static(baremuxPath))
 
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, './static/', '404.html'))
