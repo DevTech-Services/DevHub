@@ -24,8 +24,10 @@ fetch('/nav/nav.html')
   });
 
 const scripts = [
-    'js/registerSW.js',
-    'js/assets.js',
+  'epoxy/index.js',
+  'baremux/index.js',
+  'js/registerSW.js',
+  'js/assets.js',
 ];
 
 scripts.forEach(script => {
@@ -33,6 +35,19 @@ scripts.forEach(script => {
     el.src = script;
     document.body.appendChild(el);
 });
+
+// set transport
+const transportInt = setInterval(async () => {
+  if (window.BareMux) {
+    const connection = new BareMux.BareMuxConnection("/baremux/worker.js")
+
+    if (await connection.getTransport() !== "/epoxy/index.mjs") {
+      await connection.setTransport("/epoxy/index.mjs", [{ wisp: (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/" }]);
+    }
+
+    clearInterval(transportInt)
+  }
+}, 100);
 
 setTimeout(
   console.log.bind(console,"%cHello! If you are seeing this, you are in the console! Please leave if you dont know what you are doing.","background: purple;color:#FFF;padding:4px;border-radius: 5px;line-height: 26px; font-size:24px;")
@@ -46,7 +61,7 @@ setTimeout(() => {
     if (Ultraviolet && __uv$config) {
       console.log("Ultraviolet bundle and config loaded!")
     } else {
-      alert("[DevHub]\n\nError: Proxy Package not found")
+      alert("[DevHub]\n\nError: Proxy Bundle not found")
       console.error("Ultraviolet bundle and config not found")
     }
   }

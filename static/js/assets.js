@@ -1,9 +1,9 @@
 // Cloak Handler
 devhub.cloak = function(url, redirect) {
-  window.open('about:blank').document.write(`<head><title>New Tab</title></head><body><style>body {margin: 0;}</style><iframe style="border: none;" src="${url}" width="100%" height="100%"></body><script>window.isAboutBlank=true;</script>`);
+  window.open('about:blank').document.write(`<head><title>New Tab</title></head><body><style>body {margin: 0;}</style><iframe style="border: none;" src="${url}" width="100%" height="100%"></body><script>onbeforeunload()</script>`);
   if (redirect) {
     window.onbeforeunload = null
-    window.location.href = redirect;
+    window.location.replace(redirect)
   }
 };
 

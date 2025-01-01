@@ -1,20 +1,17 @@
-const stockSW = "/sw.js";
-const swAllowedHostnames = ["localhost", "127.0.0.1"];
 function registerSW() {
   if (!navigator.serviceWorker) {
-    if (
-      location.protocol !== "https:" &&
-      !swAllowedHostnames.includes(location.hostname)
-    )
-      alert("Service workers cannot be registered without https. Therefore, DevHub will NOT work.");
+      if (location.protocol !== "https:" && !["localhost", "127.0.0.1"].includes(location.hostname)) {
+          alert("Service workers cannot be registered without https. Therefore, DevHub will NOT work.")
+      }
 
-    alert("Your browser doesn't support service workers. Therefore, DevHub will NOT work.");
+      alert("Your browser doesn't support service workers. Therefore, DevHub will NOT work.");
   }
 
-  navigator.serviceWorker.register(stockSW, {
-    scope: "~",
-  })};
+  navigator.serviceWorker.register("/sw.js", {
+      scope: "~",
+  })
+};
 
-  registerSW();
+registerSW();
 
 devhub.registerSW = registerSW;

@@ -6,56 +6,53 @@ import path from 'node:path';
 import url from 'url';
 
 // proxy imports
-import { createBareServer } from "@tomphttp/bare-server-node";
-import { uvPath } from "@titaniumnetwork-dev/ultraviolet"
+import wisp from "wisp-server-node";
+import { uvPath } from "@titaniumnetwork-dev/ultraviolet";
+import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
+import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
 
-const app = express();
-const server = http.createServer();
-const bareServer = createBareServer("/dhService/");
+const app = express()
+const server = http.createServer()
 
-const port = process.env.PORT || process.argv[2] || 80;
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+const port = process.env.PORT || process.argv[2] || 80
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
-app.use(compression({ level: 6 }));
+const middleware = (req, res, next) => {
+    res.setHeader('Cache-Control', `public, max-age=${60 * 60 * 2}`) // 2 hour cache controlled from the browser
+    next()
+};
+
+// enable compression and cors
+app.use(compression())
 app.use(cors())
 
-// serve static files and cache em
-app.use(express.static(path.join(__dirname, '/static'), {
-    extensions: ['html'],
-    setHeaders: (res, path) => {
-        res.setHeader('Cache-Control', `public, max-age=${60 * 60 * 24 * 1}`) 
-    }
-}))
-app.use('/uv', express.static(uvPath, {
-    setHeaders: (res, path) => {
-        res.setHeader('Cache-Control', `public, max-age=${60 * 60 * 24 * 1}`)
-    }
-}))
+app.use('/static', middleware, express.static(path.join(__dirname, '/static'), { extensions: ['html'] }))
+
+// serve proxy files
+app.use('/uv/', middleware, express.static(uvPath))
+app.use('/epoxy/', middleware, express.static(epoxyPath))
+app.use('/baremux/', middleware, express.static(baremuxPath))
 
 app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(__dirname, './static/', '404.html'));
+    res.status(404).sendFile(path.join(__dirname, './static/', '404.html'))
 });
 
 server.on("request", (req, res) => {
-    if (bareServer.shouldRoute(req)) {
-        bareServer.routeRequest(req, res);
-    } else {
-        app(req, res);
-    }
+    app(req, res)
 });
 
 server.on("upgrade", (req, socket, head) => {
-    if (bareServer.shouldRoute(req)) {
-        bareServer.routeUpgrade(req, socket, head);
+    if (req.url.endsWith("/wisp/")) {
+        wisp.routeRequest(req, socket, head)
     } else {
-        socket.end();
+        socket.end()
     }
 });
 
 server.on("listening", () => {
-    console.log(`DevHub running at localhost:${port}`);
+    console.log(`DevHub running at localhost:${port}`)
 });
 
 server.listen({
     port: port
-});
+})

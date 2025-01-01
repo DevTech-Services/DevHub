@@ -22,8 +22,6 @@ You may get support by joining our [discord](https://dariandev.com/discord)!
 
 [Lenn106](https://github.com/lenn106) - CoOwner/Developer
 
-[Russell2259](https://github.com/Russell2259) - Developer
-
 [Ultraviolet](https://github.com/titaniumnetwork-dev/Ultraviolet) - Proxy
 
 # License
