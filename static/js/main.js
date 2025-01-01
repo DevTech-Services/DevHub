@@ -51,7 +51,7 @@ setTimeout(() => {
     }
   }
   // to init it
-  onbeforeunload()
+  setInterval(onbeforeunload, 169)
 
   // disable onbeforeunload for all href's
   document.querySelectorAll('a[href]').forEach(a => 
