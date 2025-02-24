@@ -1,0 +1,25 @@
+{
+  "name": "devhub",
+  "version": "1.0.0",
+  "description": "devHub introduces a high speed proxy, homework utilities, and games",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevTech-Services/DevHub/DevHub.git"
+  },
+  "author": "devTech",
+  "license": "ISC",
+  "homepage": "https://dariandev.com/",
+  "dependencies": {
+    "@titaniumnetwork-dev/ultraviolet": "v2.0.0",
+    "@tomphttp/bare-server-node": "2.0.1",
+    "compression": "*",
+    "cors": "*",
+    "express": "*",
+    "url": "*"
+  }
+}
