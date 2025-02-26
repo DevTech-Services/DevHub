@@ -8,7 +8,7 @@
 DevHub is a proxy hub, mostly meant to be a fast one stop shop for a high speed proxy and tons of games. All of this was possible because of  [Ultraviolet](https://github.com/titaniumnetwork-dev/Ultraviolet)!
 
  <div align="center">
-  <a href="https://dev.darianis.gay/">🔥 Live Website: https://dev.darianis.gay//</a>
+  <a href="https://dev.darianis.gay/">🔥 Live Website: https://dev.darianis.gay/</a>
 </div>
 
 # How does it work?
